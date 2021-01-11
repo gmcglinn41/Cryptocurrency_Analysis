@@ -36,6 +36,9 @@
 
 ![Marking Rubric](image.png)
 
+#### **DATASET LOCATIONS**
+- https://www.coinapi.io/
+
 
 #### **MEMBERS**
 - Anna Dunnett [@github/adunnett](https://github.com/adunnett)
