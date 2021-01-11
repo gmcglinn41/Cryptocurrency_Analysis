@@ -39,7 +39,7 @@
 
 #### **MEMBERS**
 - Anna Dunnett [@github/adunnett](https://github.com/adunnett)
-- Connorlane [@github/Move-7-8](https://github.com/Move-7-8) 
+- Connor Lane [@github/Move-7-8](https://github.com/Move-7-8) 
 - Gail McGlinn [@github/gmcglinn41](https://github.com/gmcglinn41)
 - John Bingley [@github/JB-DA](https://github.com/JB-DA)
 
