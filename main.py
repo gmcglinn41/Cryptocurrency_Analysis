@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[2]:
-
-
 #####
 ###
 ##
@@ -150,10 +147,5 @@ df_sybmols.to_sql( name = 'inventories', con = engine, if_exists = 'append', ind
 df_exchanges_rates.to_sql( name = 'inventory_sets', con = engine, if_exists = 'append', index = False )
 df_ohlcv.to_sql( name = 'minifigs', con = engine, if_exists = 'append', index = False )
 df_orderbooks.to_sql( name = 'inventory_minifigs', con = engine, if_exists = 'append', index = False )
-
-
-# In[ ]:
-
-
 
 
