@@ -143,9 +143,8 @@ engine.table_names()
 # Load dataframes into database
 df_exchanges.to_sql( name = 'themes', con = engine, if_exists = 'append', index = False )
 df_assets.to_sql( name = 'sets', con = engine, if_exists = 'append', index = False )
-df_sybmols.to_sql( name = 'inventories', con = engine, if_exists = 'append', index = False )
+df_symbols.to_sql( name = 'inventories', con = engine, if_exists = 'append', index = False )
 df_exchanges_rates.to_sql( name = 'inventory_sets', con = engine, if_exists = 'append', index = False )
 df_ohlcv.to_sql( name = 'minifigs', con = engine, if_exists = 'append', index = False )
 df_orderbooks.to_sql( name = 'inventory_minifigs', con = engine, if_exists = 'append', index = False )
-
 
