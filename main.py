@@ -30,121 +30,143 @@ import pandas as pd
 from sqlalchemy import create_engine
 import requests
 import json
+import pprint
 
 #API KEY
+
 coin_apikey1 = 'B44F0242-E0BA-4C1A-BED2-831A67426480'
-coin_apikey = '1830D89F-A633-4F73-9707-3A7FAFE5C0F0'
-
-### DOWNLOAD DATA FROM WEB API
-##
-#
-
-## EXCHANGES
-# https://rest.coinapi.io/v1/exchanges?apikey=B44F0242-E0BA-4C1A-BED2-831A67426480
-url = 'https://rest.coinapi.io/v1/exchanges'
-headers = { 'X-CoinAPI-Key' : coin_apikey }
-response = requests.get(url, headers=headers)
-
-with open( 'data_raw/exchanges.json', 'w' ) as ii:
-    json.dump( response.json(), ii )
-
-## ASSETS
-# https://rest.coinapi.io/v1/assets?apikey=B44F0242-E0BA-4C1A-BED2-831A67426480
-url = 'https://rest.coinapi.io/v1/assets'
-headers = { 'X-CoinAPI-Key' : coin_apikey }
-response = requests.get(url, headers=headers)
-
-with open( 'data_raw/assets.json', 'w' ) as ii:
-    json.dump( response.json(), ii )
-
-## SYMBOLS
-# https://rest.coinapi.io/v1/symbols?apikey=B44F0242-E0BA-4C1A-BED2-831A67426480
-url = 'https://rest.coinapi.io/v1/symbols'
-headers = { 'X-CoinAPI-Key' : coin_apikey }
-response = requests.get(url, headers=headers)
-
-with open( 'data_raw/symbols.json', 'w' ) as ii:
-    json.dump( response.json(), ii )
-
-## EXCHANGE-RATES
-# https://rest.coinapi.io/v1/exchangerate/BTC/USD?apikey=B44F0242-E0BA-4C1A-BED2-831A67426480
-url = 'https://rest.coinapi.io/v1/exchangerate/BTC/USD'
-headers = { 'X-CoinAPI-Key' : coin_apikey }
-response = requests.get(url, headers=headers)
-
-with open( 'data_raw/exchange_rates.json', 'w' ) as ii:
-    json.dump( response.json(), ii )
-
-## OHLCV - Open, High, Low, Close, Volume
-# https://rest.coinapi.io/v1/ohlcv/periods?apikey=B44F0242-E0BA-4C1A-BED2-831A67426480
-url = 'https://rest.coinapi.io/v1/ohlcv/periods'
-headers = { 'X-CoinAPI-Key' : coin_apikey }
-response = requests.get(url, headers=headers)
-
-with open( 'data_raw/ohlcv.json', 'w' ) as ii:
-    json.dump( response.json(), ii )
-
-## ORDERBOOKS
-# https://rest.coinapi.io/v1/orderbooks3/current?apikey=B44F0242-E0BA-4C1A-BED2-831A67426480
-url = 'https://rest.coinapi.io/v1/orderbooks3/current'
-headers = { 'X-CoinAPI-Key' : coin_apikey }
-response = requests.get(url, headers=headers)
-
-with open( 'data_raw/orderbooks.json', 'w' ) as ii:
-    json.dump( response.json(), ii )
+coin_apikey2 = '1830D89F-A633-4F73-9707-3A7FAFE5C0F0'
+coin_apikey = '200EF4DD-8BF3-4A8A-9FC9-CF9C9D6D1173'
 
 
-### API DATA LOAD & CLEAN
-##
-# Loads data file that was downloaded earlier using our API call
 
-# exchanges.json
-# assets.json
-# symbols.json
-# exchange_rates.json
-# ohlcv.json
-# orderbooks.json
+def api_download():
+    ### DOWNLOAD DATA FROM WEB API
+    ##
+    #
 
-with open( 'data_raw/exchanges.json', 'r' ) as jj: #open pre-downloaded api results
-    json_d = json.load( jj )
-    df_exchanges = pd.DataFrame( json_d ) #load to dataframe
+    ## EXCHANGES
+    # https://rest.coinapi.io/v1/exchanges?apikey=B44F0242-E0BA-4C1A-BED2-831A67426480
+    url = 'https://rest.coinapi.io/v1/exchanges'
+    headers = { 'X-CoinAPI-Key' : coin_apikey }
+    response = requests.get(url, headers=headers)
 
-with open( 'data_raw/assets.json', 'r' ) as jj: #open pre-downloaded api results
-    json_d = json.load( jj )
-    df_assets = pd.DataFrame( json_d ) #load to dataframe
-    
-with open( 'data_raw/symbols.json', 'r' ) as jj: #open pre-downloaded api results
-    json_d = json.load( jj )
-    df_symbols = pd.DataFrame( json_d ) #load to dataframe
-    
-with open( 'data_raw/exchange_rates.json', 'r' ) as jj: #open pre-downloaded api results
-    json_d = json.load( jj )
-    df_exchange_rates = pd.DataFrame( json_d ) #load to dataframe
-    
-with open( 'data_raw/ohlcv.json', 'r' ) as jj: #open pre-downloaded api results
-    json_d = json.load( jj )
-    df_ohlvc = pd.DataFrame( json_d ) #load to dataframe
+    with open( 'data_raw/exchanges.json', 'w' ) as ii:
+        json.dump( response.json(), ii )
 
-with open( 'data_raw/orderbooks.json', 'r' ) as jj: #open pre-downloaded api results
-    json_d = json.load( jj )
-    df_orderbooks = pd.DataFrame( json_d ) #load to dataframe
+    ## ASSETS
+    # https://rest.coinapi.io/v1/assets?apikey=B44F0242-E0BA-4C1A-BED2-831A67426480
+    url = 'https://rest.coinapi.io/v1/assets'
+    headers = { 'X-CoinAPI-Key' : coin_apikey }
+    response = requests.get(url, headers=headers)
+
+    with open( 'data_raw/assets.json', 'w' ) as ii:
+        json.dump( response.json(), ii )
+
+    ## SYMBOLS
+    # https://rest.coinapi.io/v1/symbols?apikey=B44F0242-E0BA-4C1A-BED2-831A67426480
+    url = 'https://rest.coinapi.io/v1/symbols'
+    headers = { 'X-CoinAPI-Key' : coin_apikey }
+    response = requests.get(url, headers=headers)
+
+    with open( 'data_raw/symbols.json', 'w' ) as ii:
+        json.dump( response.json(), ii )
+
+    ## EXCHANGE-RATES
+    # https://rest.coinapi.io/v1/exchangerate/BTC/USD?apikey=B44F0242-E0BA-4C1A-BED2-831A67426480
+    url = 'https://rest.coinapi.io/v1/exchangerate/BTC/USD'
+    headers = { 'X-CoinAPI-Key' : coin_apikey }
+    response = requests.get(url, headers=headers)
+
+    with open( 'data_raw/exchange_rates.json', 'w' ) as ii:
+        json.dump( [response.json()], ii ) #add [] as file is not in proper format
+
+    ## OHLCV - Open, High, Low, Close, Volume
+    # https://rest.coinapi.io/v1/ohlcv/periods?apikey=B44F0242-E0BA-4C1A-BED2-831A67426480
+    url = 'https://rest.coinapi.io/v1/ohlcv/periods'
+    headers = { 'X-CoinAPI-Key' : coin_apikey }
+    response = requests.get(url, headers=headers)
+
+    with open( 'data_raw/ohlcv.json', 'w' ) as ii:
+        json.dump( response.json(), ii )
+
+    # ## ORDERBOOKS
+    # # https://rest.coinapi.io/v1/orderbooks3/current?apikey=B44F0242-E0BA-4C1A-BED2-831A67426480
+    # url = 'https://rest.coinapi.io/v1/orderbooks3/current'
+    # headers = { 'X-CoinAPI-Key' : coin_apikey }
+    # response = requests.get(url, headers=headers)
+
+    # with open( 'data_raw/orderbooks.json', 'w' ) as ii:
+    #     json.dump( response.json(), ii )
+##END api_download
 
 
-### PUSH TO DATABASE
-##
-# Connect to database
-engine = create_engine(f"postgresql://postgres:postgres@localhost:5432/crypto_analysis_db")
-engine.begin()
-con = engine.connect()
+def api_data_clean_load():
+    ### API DATA LOAD & CLEAN
+    ##
+    # Loads data file that was downloaded earlier using our API call
 
-# Check table names
-engine.table_names()
+    with open( 'data_raw/exchanges.json', 'r' ) as jj: #open pre-downloaded api results
+        json_d = json.load( jj )
+        global df_exchanges 
+        df_exchanges = pd.DataFrame( json_d ) #load to dataframe
 
-# Load dataframes into database
-df_exchanges.to_sql( name = 'themes', con = engine, if_exists = 'append', index = False )
-df_assets.to_sql( name = 'sets', con = engine, if_exists = 'append', index = False )
-df_symbols.to_sql( name = 'inventories', con = engine, if_exists = 'append', index = False )
-df_exchanges_rates.to_sql( name = 'inventory_sets', con = engine, if_exists = 'append', index = False )
-df_ohlcv.to_sql( name = 'minifigs', con = engine, if_exists = 'append', index = False )
-df_orderbooks.to_sql( name = 'inventory_minifigs', con = engine, if_exists = 'append', index = False )
+    with open( 'data_raw/assets.json', 'r' ) as jj: #open pre-downloaded api results
+        json_d = json.load( jj )
+        global df_assets
+        df_assets = pd.DataFrame( json_d ) #load to dataframe
+
+    with open( 'data_raw/symbols.json', 'r' ) as jj: #open pre-downloaded api results
+        json_d = json.load( jj )
+        global df_symbols
+        df_symbols = pd.DataFrame( json_d ) #load to dataframe
+
+    with open( 'data_raw/exchange_rates.json', 'r' ) as jj: #open pre-downloaded api results
+        json_d = json.load( jj )
+        global df_exchange_rates
+        df_exchange_rates = pd.DataFrame( json_d ) #load to dataframe
+
+    with open( 'data_raw/ohlcv.json', 'r' ) as jj: #open pre-downloaded api results
+        json_d = json.load( jj )
+        global df_ohlcv
+        df_ohlcv = pd.DataFrame( json_d ) #load to dataframe
+
+    # with open( 'data_raw/orderbooks.json', 'r' ) as jj: #open pre-downloaded api results
+    #     json_d = json.load( jj )
+    #     df_orderbooks = pd.DataFrame( json_d ) #load to dataframe
+##END api_data_clean_load
+
+def push_database():
+    ### PUSH TO DATABASE
+    ##
+    # Connect to database
+    engine = create_engine(f"postgresql://postgres:postgres@localhost:5432/crypto_analysis_db")
+    engine.begin()
+    con = engine.connect()
+
+    # Check table names
+    engine.table_names()
+
+    # Load dataframes into database
+    df_exchanges.to_sql( name = 'themes', con = engine, if_exists = 'append', index = False )
+    df_assets.to_sql( name = 'sets', con = engine, if_exists = 'append', index = False )
+    df_symbols.to_sql( name = 'inventories', con = engine, if_exists = 'append', index = False )
+    df_exchanges_rates.to_sql( name = 'inventory_sets', con = engine, if_exists = 'append', index = False )
+    df_ohlcv.to_sql( name = 'minifigs', con = engine, if_exists = 'append', index = False )
+    #df_orderbooks.to_sql( name = 'inventory_minifigs', con = engine, if_exists = 'append', index = False )
+##END push_database
+
+def dataframe_display():
+    display( df_exchanges )
+    display( df_assets )
+    display( df_symbols )
+    display( df_exchange_rates )
+    display( df_ohlcv )
+##END dataframe_display
+
+
+#api_download()
+api_data_clean_load()
+#push_database()
+dataframe_display()
 
