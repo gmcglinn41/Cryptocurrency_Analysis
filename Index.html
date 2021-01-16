@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard page</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+  <!--CSS Link-->
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+          <style>
+          .dropbtn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+          }
+          
+          .dropdown {
+            position: relative;
+            display: inline-block;
+          }
+          
+          .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+          }
+          
+          .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+          }
+          
+          .dropdown-content a:hover {background-color: #f1f1f1;}
+          .dropdown:hover .dropdown-content {display: block;}
+          .dropdown:hover .dropbtn {background-color: #3e8e41;}
+          </style>
+</head>
+
+<body>
+ <!-- Navigation -->
+    <div class="navigation">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" style="background-color: #0BADA6;" href="Landing.html">Dashboard</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" 
+            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
+            aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" 
+                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Plots
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="Max_Temperature.html">Max Temperature</a>
+                    <a class="dropdown-item" href="Humidity.html">Humidity</a>
+                    <a class="dropdown-item" href="Cloudiness.html">Cloudiness</a>
+                    <a class="dropdown-item" href="Wind_Speed.html">Wind Speed</a>
+                  </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Comparisons.html">Comparison</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="Data.html">Data</a>
+                  </li>
+              </ul>
+            </div>
+          </nav>
+    </div>
+     <!-- Content -->
+    <div class="container">
+        <div class="row">
+          <div class = "col-sm">
+          <div class="dropdown" style="float:left;">
+            <button class="dropbtn">Left</button>
+            <div class="dropdown-content" style="left:0;">
+              <a href="#">Link 1</a>
+              <a href="#">Link 2</a>
+              <a href="#">Link 3</a>
+          <div>
+          </div>
+          </div>
+          <!-- Left Session -->
+          <div class="col-lg-7">
+                <div class="box">
+                  <h1 class="title">Dashboard - Cryptocurrency</h1>
+                  <img src="WebVisualisations/Resources/assets/images/Fig1.png" width="95%" height="95%" alt="Max Temperature Chart">
+                  <br>
+                  <br>
+                  <br>
+                  <p>The purpose of this project was to determine why Cryptocurrency is such a recurring phenomenon.</p>
+                  <br>
+                  <p>We pulled various datasets, we used xxxxxx to plot various aspects of the weather vs. latitude.
+                    Factors we looked at included: Crytocurrencies against Bitcoin, xxxxx, and xxxxx. This site provides the
+                    source data and visualizations created as part of the analysis, as well as explanations and descriptions of
+                    any trends and correlations witnessed.</p>
+                </div>
+          </div>
+          
+         
+               
+           
+
+          <!-- Right Session -->
+          <div class="col-lg-5">
+                <div class="box">
+                  <h2>Visualizations</h2>
+                  <div class="container">
+                        <div class="row" >
+                          <div class="col-6">
+                            <a href="Max_Temperature.html">
+                              <img class="panel" src="WebVisualisations/Resources/assets/images/Fig1.png" width="230px" height="190px" alt="Max Temp Chart">
+                            </a>
+                          </div>
+                          <div class="col-6">
+                            <a href="Humidity.html">
+                              <img class="panel" src="WebVisualisations/Resources/assets/images/Fig2.png" width="230px" height="190px" alt="Humidity Chart">
+                            </a>
+                          </div>
+                        </div>
+            
+                        <div class="row" >
+                          <div class="col-6">
+                            <a href="Cloudiness.html">
+                              <img class="panel" src="WebVisualisations/Resources/assets/images/Fig3.png" width="230px" height="190px" alt="Cloudiness Chart">
+                            </a>
+                          </div>
+                          <div class="col-6">
+                            <a href="Wind_Speed.html">
+                              <img class="panel" src="WebVisualisations/Resources/assets/images/Fig4.png" width="230px" height="190px" alt="Wind Speed Chart">
+                            </a>
+                          </div>
+                        </div>
+                 </div>
+          </div>
+    </div>       
+</body>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+
+</html>
