@@ -26,7 +26,7 @@ CREATE TABLE "Market_Symbols" (
 CREATE TABLE "Asset_Overview" (
     "asset_id" int   NOT NULL,
     "name" string   NOT NULL,
-    "price" int   NOT NULL,
+    "price_usd" int   NOT NULL,
     CONSTRAINT "pk_Asset_Overview" PRIMARY KEY (
         "asset_id"
      )
@@ -48,5 +48,5 @@ ALTER TABLE "Market_Symbols" ADD CONSTRAINT "fk_Market_Symbols_asset_id_base" FO
 REFERENCES "Asset_Overview" ("asset_id");
 
 ALTER TABLE "Historic_Trades" ADD CONSTRAINT "fk_Historic_Trades_price" FOREIGN KEY("price")
-REFERENCES "Asset_Overview" ("price");
+REFERENCES "Asset_Overview" ("price_usd");
 
