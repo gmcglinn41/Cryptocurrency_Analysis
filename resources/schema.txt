@@ -17,7 +17,7 @@ Asset_Overview
 -
 asset_id PK int 
 name string
-price int
+price_usd int
 
 Historic_Trades
 - 
