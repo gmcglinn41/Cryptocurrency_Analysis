@@ -22,5 +22,5 @@ price_usd int
 Historic_Trades
 - 
 symbol_id PK int 
-price int FK >- Asset_Overview.price
+price int FK >- Asset_Overview.price_usd
 size int
