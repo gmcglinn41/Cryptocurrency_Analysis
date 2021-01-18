@@ -1,26 +1,26 @@
 Exchanges 
 - 
-exchange_id PK int
-website string 
-name string
-data_symbols_count int
-volume_1mth_usd int
+exchange_id PK VARCHAR
+website VARCHAR 
+name VARCHAR
+data_symbols_count VARCHAR
+volume_1mth_usd FLOAT
 
 Market_Symbols
 -
-symbol_id PK int
-exchange_id string FK >- Exchanges.exchange_id
-asset_id_base string FK >- Asset_Overview.asset_id
-asset_id_quote string
+symbol_id PK VARCHAR
+exchange_id VARCHAR FK >- Exchanges.exchange_id
+asset_id_base VARCHAR FK >- Asset_Overview.asset_id
+asset_id_quote VARCHAR
 
 Asset_Overview
 -
-asset_id PK int 
-name string
-price_usd int
+asset_id PK VARCHAR
+name VARCHAR
+price_usd FLOAT
 
 Historic_Trades
 - 
-symbol_id PK int 
-price int FK >- Asset_Overview.price
+symbol_id PK VARCHAR FK >- Market_Symbols.symbol_id
+price int
 size int
