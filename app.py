@@ -19,10 +19,10 @@ Base = automap_base()
 Base.prepare(engine, reflect=True)
 
 # Save reference to the table
-table_overview = Base.classes.Asset_Overview
-table_market_symbols = Base.classes.Market_Symbols
-table_exchanges = Base.classes.Exchanges
-table_historic_trades = Base.classes.Historic_Trades
+table_overview = Base.classes.asset_overview
+#table_market_symbols = Base.classes.Market_Symbols
+#table_exchanges = Base.classes.Exchanges
+#table_historic_trades = Base.classes.Historic_Trades
 
 #################################################
 # Flask Setup
@@ -37,60 +37,60 @@ app = Flask(__name__)
 @app.route("/")
 def overview():
 
-    # session = Session(engine)
-    # #Uses the asset overview table
-    # asset_id = session.query(table_overview.asset_id).all()
-    # name = session.query(table_overview.name).all()
-    # price_usd = session.query(table_overview.price_usd).all()
+    session = Session(engine)
+    #Uses the asset overview table
+    asset_id = session.query(table_overview.asset_id).all()
+    name = session.query(table_overview.name).all()
+    price_usd = session.query(table_overview.price_usd).all()
 
-    # session.close()
+    session.close()
 
     return render_template('index.html')
 ## Use HTML links to the other pages instead of the return of apis in routes
 
 
-@app.route("/api/v1.0/changes")
-def change():
-
-    session = Session(engine)
-
-    historic_trades = session.query(table_historic_trades).all()
-    # price = session.query(table_historic_trades.price).all()
-    # size = session.query(table_historic_trades.size).all()
-
-    session.close()
-
-    return jsonify(historic_trades)
-    # render_template('changes.html', change=change)
-
-@app.route("/api/v1.0/exchanges")
-def exchange():
-
-    session = Session(engine)
-
-    exchange_id = session.query(table_exchanges).all()
-    website = session.query(table_exchanges).all()
-    name = session.query(table_exchanges).all()
-    data_symbols_count = session.query(table_exchanges).all()
-    volume_1mth_usd = session.query(table_exchanges).all()
-
-    session.close()  
-
-    return render_template('exchanges.html', exchange=exchange)
-
-
-## Only doing coin family if we have time 
-
-# @app.route("/api/v1.0/coin_family")
-# def coinfamily():
+# @app.route("/api/v1.0/changes")
+# def change():
 
 #     session = Session(engine)
 
-
+#     historic_trades = session.query(table_historic_trades).all()
+#     # price = session.query(table_historic_trades.price).all()
+#     # size = session.query(table_historic_trades.size).all()
 
 #     session.close()
 
-#     return render_template('coin_family.html', coin_fam=coin_fam)
+#     return jsonify(historic_trades)
+#     # render_template('changes.html', change=change)
+
+# @app.route("/api/v1.0/exchanges")
+# def exchange():
+
+#     session = Session(engine)
+
+#     exchange_id = session.query(table_exchanges).all()
+#     website = session.query(table_exchanges).all()
+#     name = session.query(table_exchanges).all()
+#     data_symbols_count = session.query(table_exchanges).all()
+#     volume_1mth_usd = session.query(table_exchanges).all()
+
+#     session.close()  
+
+#     return render_template('exchanges.html', exchange=exchange)
+
+
+# ## Only doing coin family if we have time 
+
+# # @app.route("/api/v1.0/coin_family")
+# # def coinfamily():
+
+# #     session = Session(engine)
+
+
+
+# #     session.close()
+
+# #     return render_template('coin_family.html', coin_fam=coin_fam)
 
 
 if __name__ == '__main__':
