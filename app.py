@@ -20,9 +20,9 @@ Base.prepare(engine, reflect=True)
 
 # Save reference to the table
 table_overview = Base.classes.asset_overview
-#table_market_symbols = Base.classes.Market_Symbols
-#table_exchanges = Base.classes.Exchanges
-#table_historic_trades = Base.classes.Historic_Trades
+#table_market_symbols = Base.classes.market_symbols
+#table_exchanges = Base.classes.exchanges
+#table_historic_trades = Base.classes.historic_trades
 
 #################################################
 # Flask Setup
@@ -45,7 +45,7 @@ def overview():
 
     session.close()
 
-    return render_template('index.html')
+    return render_template('index.html', asset_id=asset_id)
 ## Use HTML links to the other pages instead of the return of apis in routes
 
 
