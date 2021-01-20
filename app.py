@@ -37,13 +37,13 @@ app = Flask(__name__)
 @app.route("/")
 def overview():
 
-    session = Session(engine)
-    #Uses the asset overview table
-    asset_id = session.query(table_overview.asset_id).all()
-    name = session.query(table_overview.name).all()
-    price_usd = session.query(table_overview.price_usd).all()
+    # session = Session(engine)
+    # #Uses the asset overview table
+    # asset_id = session.query(table_overview.asset_id).all()
+    # name = session.query(table_overview.name).all()
+    # price_usd = session.query(table_overview.price_usd).all()
 
-    session.close()
+    # session.close()
 
     return render_template('index.html')
 ## Use HTML links to the other pages instead of the return of apis in routes
@@ -54,13 +54,14 @@ def change():
 
     session = Session(engine)
 
-    symbol_id = session.query(table_historic_trades.symbol_id).all()
-    price = session.query(table_historic_trades.price).all()
-    size = session.query(table_historic_trades.size).all()
+    historic_trades = session.query(table_historic_trades).all()
+    # price = session.query(table_historic_trades.price).all()
+    # size = session.query(table_historic_trades.size).all()
 
     session.close()
 
-    return render_template('changes.html', change=change)
+    return jsonify(historic_trades)
+    # render_template('changes.html', change=change)
 
 @app.route("/api/v1.0/exchanges")
 def exchange():
