@@ -8,7 +8,7 @@ var graphData = {{ data.chart_data | safe }}
     var graphHeight = svgHeight - margin.top - margin.bottom;
 
     // Parse the date / time
-    var parseDate = d3.time.format("%Y-%m-%d").parse;
+    var parseDate = d3.timeFormat("%Y-%m-%d").parse;
 
     // Set the ranges
     var x = d3.time.scale().range([0, graphWidth]);

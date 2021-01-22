@@ -7,7 +7,7 @@ from sqlalchemy import create_engine, func
 import pandas as pd
 from flask import Flask, jsonify, render_template, url_for, redirect 
 import json
-
+import jinja2
 
 #################################################
 # Database Setup
@@ -36,6 +36,7 @@ def index():
     chart_data = df.to_dict(orient='records')
     chart_data = json.dumps(chart_data, indent=2)
     data = {'chart_data': chart_data}
+
     return render_template("index.html", data=data)
 
 ## ^^ Use HTML links to the other pages instead of the return of apis in routes (?)
