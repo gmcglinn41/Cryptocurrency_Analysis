@@ -53,6 +53,7 @@
 
     <title>Cryptocurrency Analysis Dashboard</title>
     <script type="text/javascript" src={{ url_for('static', filename='testjs.js') }} ></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
   </head>
   <body>
     
@@ -61,11 +62,11 @@
 
 
 
-    <script src="https://d3js.org/d3.v5.min.js"></script>
+
     <script type="text/javascript" src={{ url_for('static', filename='graph.js') }} >
     </script>  
 
-
+<center>{{ data }}</center>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

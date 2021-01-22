@@ -1,6 +1,4 @@
-//var graphData = {{ data.chart_data | safe }}
-
-var graphData = {{ data }}
+var graphData = {{ data.chart_data | safe }}
 
     // Set the dimensions of the svg
     var margin = {top: 30, right: 50, bottom: 30, left: 50};
