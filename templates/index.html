@@ -61,6 +61,7 @@
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <script>
 
+      var graphData = {{ data.chart_data | safe }}
       // Set the dimensions of the canvas / graph
       var margin = {top: 30, right: 20, bottom: 30, left: 50},
           width = 600 - margin.left - margin.right,
