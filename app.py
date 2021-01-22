@@ -11,7 +11,7 @@ from flask import Flask, jsonify, render_template, url_for, redirect
 #################################################
 # Database Setup
 #################################################
-engine = create_engine(f"postgresql://postgres:PASSWORD@localhost:5433/crypto_analysis_db")
+engine = create_engine(f"postgresql://postgres:postgres@localhost:5432/crypto_analysis_db")
 
 # reflect an existing database into a new model
 Base = automap_base()
@@ -33,7 +33,9 @@ def index():
     session = Session(engine)
     session.close()
 
-    return render_template('index.html')
+    test = "SOME LOADING STUFF"
+
+    return render_template('index.html', asset_id=test)
 
 ## ^^ Use HTML links to the other pages instead of the return of apis in routes (?)
 
@@ -46,14 +48,14 @@ def overview():
     return overview_result
 
 
-@app.route("/api/symbols")
+@app.route("/api/team")
 def symbols():
 
     dbConnect = engine.connect()
     df = pd.read_sql('select * from market_symbols', dbConnect).head(20)
     symbols_result = df.to_json(orient='records')
     dbConnect.close()
-    return symbols_result
+    return render_template('OurTeam.html')
 
 @app.route("/api/exchanges")
 def exchange():
