@@ -11,7 +11,7 @@ from flask import Flask, jsonify, render_template, url_for, redirect
 #################################################
 # Database Setup
 #################################################
-engine = create_engine(f"postgresql://postgres:fender2007@localhost:5433/crypto_analysis_db")
+engine = create_engine(f"postgresql://postgres:PASSWORD@localhost:5433/crypto_analysis_db")
 
 # reflect an existing database into a new model
 Base = automap_base()
