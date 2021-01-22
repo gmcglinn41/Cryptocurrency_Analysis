@@ -1,4 +1,4 @@
-Exchanges 
+exchanges 
 - 
 exchange_id PK VARCHAR
 website VARCHAR 
@@ -6,21 +6,21 @@ name VARCHAR
 data_symbols_count VARCHAR
 volume_1mth_usd FLOAT
 
-Market_Symbols
+market_symbols
 -
 symbol_id PK VARCHAR
-exchange_id VARCHAR FK >- Exchanges.exchange_id
-asset_id_base VARCHAR FK >- Asset_Overview.asset_id
+exchange_id VARCHAR FK >- exchanges.exchange_id
+asset_id_base VARCHAR FK >- asset_overview.asset_id
 asset_id_quote VARCHAR
 
-Asset_Overview
+asset_overview
 -
 asset_id PK VARCHAR
 name VARCHAR
 price_usd FLOAT
 
-Historic_Trades
+historic_trades
 - 
-symbol_id PK VARCHAR FK >- Market_Symbols.symbol_id
+symbol_id PK VARCHAR FK >- market_symbols.symbol_id
 price int
 size int

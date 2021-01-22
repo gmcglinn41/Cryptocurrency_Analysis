@@ -1,6 +1,9 @@
-﻿-- Exported from QuickDBD: https://www.quickdatabasediagrams.com/
+-- Exported from QuickDBD: https://www.quickdatabasediagrams.com/
 -- NOTE! If you have used non-SQL datatypes in your design, you will have to change these here.
-
+DROP TABLE IF EXISTS exchanges CASCADE;
+DROP TABLE IF EXISTS market_symbols CASCADE;
+DROP TABLE IF EXISTS asset_overview CASCADE;
+DROP TABLE IF EXISTS historic_trades CASCADE;
 
 CREATE TABLE "exchanges" (
     "exchange_id" VARCHAR   NOT NULL,
@@ -14,6 +17,7 @@ CREATE TABLE "exchanges" (
 );
 
 CREATE TABLE "market_symbols" (
+	index int NOT NULL,
     "symbol_id" VARCHAR   NOT NULL,
     "exchange_id" VARCHAR   NOT NULL,
     "asset_id_base" VARCHAR   NOT NULL,
