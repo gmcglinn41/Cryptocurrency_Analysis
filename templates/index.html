@@ -5,9 +5,30 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    
+    <style> /* set the CSS */
+      body { font: 12px Arial;}
+      path {
+        stroke-width: 2;
+        fill: none;
+      }
+      .axis path, .axis line {
+        fill: none;
+        stroke: grey;
+        stroke-width: 1;
+        shape-rendering: crispEdges;
+      }
+      .area {
+        fill: #F0F8FF;
+        stroke-width: 0;
+      }
+    </style>
+
+
+
+
     <!-- Navbar-->
     <nav class="navbar navbar-dark bg-dark">
       <ul class="nav nav-tabs">
@@ -34,87 +55,17 @@
     <script type="text/javascript" src={{ url_for('static', filename='testjs.js') }} ></script>
   </head>
   <body>
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-12">
-          <h1 class="title">Dashboard - Cryptocurrency</h1>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-sm-8">
-          <div class="box">
-            <br>
-            <p>The purpose of this project was to determine why Cryptocurrency is such a recurring phenomenon.</p>
-            <br>
-            <p>We pulled various datasets, we used xxxxxx to plot various aspects of the weather vs. latitude.
-              Factors we looked at included: Crytocurrencies against Bitcoin, xxxxx, and xxxxx. This site provides the
-              source data and visualizations created as part of the analysis, as well as explanations and descriptions of
-              any trends and correlations witnessed.</p>
-              <br>
-              <br>
-          </div>
-        </div>
-        <div class="col-sm-3">
-          <div class="box">
-            <p>Chart Title</p>
-            <img src="#" width="95%" height="95%" alt="Chart One">
-          </div>
-        </div>
-      </div>
-
-      <div class="col-sm-12">
-        <div class="box">
-        <h3 class="title">Section 2</h3>
-        <br>
-        <br>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-sm-4">
-          <div class="box">
-            <br>
-            <p>The purpose of this project was to determine why Cryptocurrency is such a recurring phenomenon.</p>
-            <br>
-            <p>We pulled various datasets, we used xxxxxx to plot various aspects of the weather vs. latitude.
-              Factors we looked at included: Crytocurrencies against Bitcoin, xxxxx, and xxxxx. This site provides the
-              source data and visualizations created as part of the analysis, as well as explanations and descriptions of
-              any trends and correlations witnessed.</p>
-          </div>
-        </div>
-        <div class="col-sm-4">
-          <div class="box">
-            <br>
-            <p>We pulled various datasets, we used xxxxxx to plot various aspects of the weather vs. latitude.
-              Factors we looked at included: Crytocurrencies against Bitcoin, xxxxx, and xxxxx. This site provides the
-              source data and visualizations created as part of the analysis, as well as explanations and descriptions of
-              any trends and correlations witnessed</p>
-            <img src="#" width="95%" height="95%" alt="Chart One">
-          </div>
-        </div>
-        <div class="col-sm-4">
-          <div class="box">
-            <br>
-            <p>We pulled various datasets, we used xxxxxx to plot various aspects of the weather vs. latitude.
-              Factors we looked at included: Crytocurrencies against Bitcoin, xxxxx, and xxxxx. This site provides the
-              source data and visualizations created as part of the analysis, as well as explanations and descriptions of
-              any trends and correlations witnessed</p>
-            <img src="#" width="95%" height="95%" alt="Chart One">
-          </div>
-        </div>
-      </div>
-
-
-
-    </div>
+    
+    <div id="graphDiv"></div>
 
 
 
 
-    <!-- <img src={{ url_for('static', filename='/Images/Anna.jpg') }} width="50%" height="50%" alt="AnnaZ"> -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script type="text/javascript" src={{ url_for('static', filename='graph.js') }} >
+    </script>  
 
-    {{ asset_id }}
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

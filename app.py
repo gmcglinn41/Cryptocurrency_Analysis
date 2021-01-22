@@ -6,6 +6,7 @@ from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func
 import pandas as pd
 from flask import Flask, jsonify, render_template, url_for, redirect 
+import json
 
 
 #################################################
@@ -30,12 +31,11 @@ app = Flask(__name__)
 @app.route("/")
 def index():
 
-    session = Session(engine)
-    session.close()
-
-    test = "SOME LOADING STUFF"
-
-    return render_template('index.html', asset_id=test)
+    df = pd.read_csv('data.csv').drop('Open', axis=1)
+    chart_data = df.to_dict(orient='records')
+    chart_data = json.dumps(chart_data, indent=2)
+    data = {'chart_data': chart_data}
+    return render_template("index.html", data=data)
 
 ## ^^ Use HTML links to the other pages instead of the return of apis in routes (?)
 
