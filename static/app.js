@@ -1,5 +1,4 @@
 // Define SVG area dimensions
-
 var svgWidth = 960;
 var svgHeight = 660;
 
@@ -17,7 +16,7 @@ var chartHeight = svgHeight - chartMargin.top - chartMargin.bottom;
 
 // Select body, append SVG area to it, and set the dimensions
 var svg = d3
-  .select("graphDiv")
+  .select("body")
   .append("svg")
   .attr("height", svgHeight)
   .attr("width", svgWidth);
@@ -28,8 +27,7 @@ var chartGroup = svg.append("g")
   .attr("transform", `translate(${chartMargin.left}, ${chartMargin.top})`);
 
 // Load data from hours-of-tv-watched.csv
-d3.json(data).then(function(tvData) {
-//d3.csv("data.csv").then(function(tvData) {
+d3.csv("data.csv").then(function(tvData) {
 
   // Print the tvData
   console.log(tvData);
