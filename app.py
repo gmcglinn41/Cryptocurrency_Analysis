@@ -50,14 +50,14 @@ def index():
 #     return overview_result
 
 
-# @app.route("/api/team")
-# def symbols():
+@app.route("/api/team")
+def symbols():
 
-#     dbConnect = engine.connect()
-#     df = pd.read_sql('select * from market_symbols', dbConnect).head(20)
-#     symbols_result = df.to_json(orient='records')
-#     dbConnect.close()
-#     return render_template('OurTeam.html')
+    dbConnect = engine.connect()
+    df = pd.read_sql('select * from market_symbols', dbConnect).head(20)
+    symbols_result = df.to_json(orient='records')
+    dbConnect.close()
+    return render_template('OurTeam.html')
 
 # @app.route("/api/exchanges")
 # def exchange():
