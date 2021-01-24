@@ -1,6 +1,6 @@
 # OVERVIEW OF CRYPTOCURRENCY HISTORICAL DATA (vs SENTIMENT DATA?)
 
-
+jsuites drop down box
 #### **IDEAS**
 - Yahoo finance historical data
 - Show historical using stock code
