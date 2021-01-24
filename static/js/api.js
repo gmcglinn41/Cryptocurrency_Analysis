@@ -1,8 +1,8 @@
-alert("The Javascript file was loaded...");
+//alert("The Overview Javascript file was loaded...");
 
 function init() {
   
-  let chartURL = "/api/overview";
+  let chartURL = "/api/api_overview";
   console.log(chartURL);
   console.log('#####')
 

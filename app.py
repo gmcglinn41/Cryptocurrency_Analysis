@@ -13,10 +13,7 @@ import jinja2
 ###
 #
 engine = create_engine(f"postgresql://postgres:postgres@localhost:5432/crypto_analysis_db")
-
-# Reflect an existing database into a new model
 Base = automap_base()
-# Reflect the tables
 Base.prepare(engine, reflect=True)
 
 ##### FLASK SETUP
@@ -29,71 +26,62 @@ app = Flask(__name__)
 #
 
 # API Pages
-@app.route("/api/overview")
-def overview():
+@app.route("/api/api_overview")
+def api_overview():
     dbConnect = engine.connect()
     df = pd.read_sql('select * from asset_overview', dbConnect).head(20)
-    results = df.to_json(orient='records')
-    json_overview = json.loads(results)
-    #json.dumps(parsed)
+    json_overview = json.loads(df.to_json(orient='records'))
     dbConnect.close()
     return jsonify(json_overview)
 
-    # dump_data = dumps(data)
-    # json_data = json.loads(dump_data)
-    # return jsonify(json_data) 
-    # dump_latest = dumps(latest) 
-    # json_latest = json.loads(dump_latest)
-    # return jsonify(json_latest)
+@app.route("/api/api_coins")
+def api_coins():
+    dbConnect = engine.connect()
+    df = pd.read_sql('select * from asset_overview', dbConnect).head(100)
+    json_coins = json.loads(df.to_json(orient='records'))
+    dbConnect.close()
+    return jsonify(json_coins)
 
-# @app.route("/api/")
-# def index():
-#     dbConnect = engine.connect()
-#     df = pd.read_sql('select * from asset_overview', dbConnect).head(20)
-#     results_index = df.to_json(orient='records')
-#     dbConnect.close()
-#     return (results_index)
+@app.route("/api/api_exchanges")
+def api_exchanges():
+    dbConnect = engine.connect()
+    df = pd.read_sql('select * from exchanges', dbConnect).head(20)
+    json_exchanges = json.loads(df.to_json(orient='records'))
+    dbConnect.close()
+    return jsonify(json_exchanges)
 
-# @app.route("/api/overview")
-# def index():
-#     dbConnect = engine.connect()
-#     df = pd.read_sql('select * from asset_overview', dbConnect).head(20)
-#     results_index = df.to_json(orient='records')
-#     dbConnect.close()
-#     return (results_index)
-
-# @app.route("/api/overview")
-# def index():
-#     dbConnect = engine.connect()
-#     df = pd.read_sql('select * from asset_overview', dbConnect).head(20)
-#     results_index = df.to_json(orient='records')
-#     dbConnect.close()
-#     return (results_index)
+@app.route("/api/api_historic")
+def api_historic():
+    dbConnect = engine.connect()
+    df = pd.read_sql('select * from historic_trades', dbConnect).head(20)
+    json_historic = df.to_json(orient='records')
+    dbConnect.close()
+    return jsonify(json_historic)
 
 # HTML PAGES
 @app.route('/')
 def index():
     return render_template('index.html')
 
-# @app.route('/coins')
-# def coins():
-#     return render_template('coins.html')
+@app.route('/coins')
+def coins():
+    return render_template('coins.html')
 
-# @app.route('/markets')
-# def markets():
-#     return render_template('markets.html')
+@app.route('/exchanges')
+def exchanges():
+    return render_template('exchanges.html')
 
-# @app.route('/data')
-# def data():
-#     return render_template('data.html')
+@app.route('/historic')
+def historic():
+    return render_template('historic.html')
 
-# @app.route('/team')
-# def team():
-#     return render_template('team.html')
+@app.route('/team')
+def team():
+    return render_template('team.html')
 
-# @app.route('/api')
-# def api():
-#     return render_template('api.html')
+@app.route('/api')
+def api():
+    return render_template('api.html')
 
 ##### RUN THAT CODE
 ###
