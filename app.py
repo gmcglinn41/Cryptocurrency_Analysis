@@ -37,7 +37,7 @@ def api_overview():
 @app.route("/api/api_coins")
 def api_coins():
     dbConnect = engine.connect()
-    df = pd.read_sql('select * from asset_overview', dbConnect).head(100)
+    df = pd.read_sql('select * from asset_overview', dbConnect).head(13)
     json_coins = json.loads(df.to_json(orient='records'))
     dbConnect.close()
     return jsonify(json_coins)

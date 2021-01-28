@@ -27,16 +27,24 @@ a:hover {
 a:active {
     color: #123456;
 }
+
 .bar {
-  fill: orange;
+    fill: orange;
 }
 
 .bar:hover {
-  fill: green;
+    fill: green;
 }
-</style>		 
+
+.mainchartdiv {
+    padding: 100px;
+}</style>		 
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abel">
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=ABeeZee">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=ABeeZee">
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+        <script src="https://d3js.org/d3.v5.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link rel="icon" href="data:,">
 	</head>
 	<body>
 		<table style="height: 100%; width: 100%; border-collapse: collapse;" border="0" cellspacing="0" cellpadding="0">
@@ -76,8 +84,11 @@ a:active {
 				</tr>
 				<tr>
 					<td style="width: 50px;">&nbsp;</td>
-					<td>
-						<div class="mainchart"></div>
+					<td>  <select id="selDataset" placeholder="Pick a coin">
+                        <!-- Use coins.js to load values here from API call -->
+                      </select>
+                    
+						<div id="mainchartdiv"></div>
 					</td>
 					<td style="width: 50px;">&nbsp;</td>
 				</tr>
@@ -90,8 +101,8 @@ a:active {
     background-color: #c3c3c3;">© 2020 CodeMonkeys&nbsp; &nbsp; Privacy &amp; cookies&nbsp; &nbsp; Terms of use&nbsp; &nbsp; Contact us</td>
 				</tr>
 			</tbody>
-        </table>
-        <script src="https://d3js.org/d3.v5.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
-<script src='../static/js/coins.js'></script>
+		</table>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
+		<script src='../static/js/coins.js'></script>
 	</body>
