@@ -56,7 +56,9 @@ function updatePlotly() {
         .forEach(function (item, index) {
           yplots.push(data[index].price_close,
             xplots.push(data[index].time_period_start),
-        )})},
+          )
+        })
+    },
     error: function (err) { alert(err); },
     beforeSend: function (xhr) {
       xhr.setRequestHeader("X-CoinAPI-Key", "200EF4DD-8BF3-4A8A-9FC9-CF9C9D6D1173"); // Enter here your key

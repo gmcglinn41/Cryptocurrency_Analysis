@@ -29,7 +29,7 @@ var chartGroup = svg.append("g")
   .attr("transform", `translate(${chartMargin.left}, ${chartMargin.top})`);
 
 // Import Data
-d3.json(chartURL).then(function(chartData, err) {
+d3.json(chartURL).then(function (chartData, err) {
   if (err) throw err;
 
   chartData.shift();
@@ -37,15 +37,15 @@ d3.json(chartURL).then(function(chartData, err) {
 
 
   // load data
-  chartData.forEach(function(d) {
+  chartData.forEach(function (d) {
     plotpoints.asset_id = +d.asset_id;
     plotpoints.price_usd = +d.price_usd;
     console.log(d.asset_id + " --- " + d.price_usd);
   });
 
-    // Step 2: Create scale functions
-    // ==============================
-    var xBandScale = d3.scaleBand()
+  // Step 2: Create scale functions
+  // ==============================
+  var xBandScale = d3.scaleBand()
     .domain(chartData.map(plotpoints => plotpoints.asset_id))
     .range([0, chartWidth])
     .padding(0.1);
@@ -55,22 +55,22 @@ d3.json(chartURL).then(function(chartData, err) {
     .domain([0, d3.max(chartData, plotpoints => plotpoints.price_usd)])
     .range([chartHeight, 0]);
 
-    // Step 3: Create axis functions
-    // ==============================
-    var bottomAxis = d3.axisBottom(xBandScale);
-    var leftAxis = d3.axisLeft(yLinearScale);
+  // Step 3: Create axis functions
+  // ==============================
+  var bottomAxis = d3.axisBottom(xBandScale);
+  var leftAxis = d3.axisLeft(yLinearScale);
 
-    // Step 4: Append Axes to the chart
-    // ==============================
-    chartGroup.append("g")
+  // Step 4: Append Axes to the chart
+  // ==============================
+  chartGroup.append("g")
     .call(leftAxis);
 
-    chartGroup.append("g")
+  chartGroup.append("g")
     .attr("transform", `translate(0, ${chartHeight})`)
     .call(bottomAxis);
 
-    // // Bar
-    var barGroup = chartGroup.selectAll(".bar")
+  // // Bar
+  var barGroup = chartGroup.selectAll(".bar")
     .data(chartData)
     .enter()
     .append("rect")
@@ -80,45 +80,45 @@ d3.json(chartURL).then(function(chartData, err) {
     .attr("width", xBandScale.bandwidth())
     .attr("height", plotpoints => chartHeight - yLinearScale(plotpoints.price_usd));
 
-    // Step 6: Initialize tool tip
-    // ==============================
-    var toolTip = d3.tip()
-      .attr("class", "tooltip")
-      .offset([80, -60])
-      .html(function(d) {
-        return (`Name: ${d.name}<br>Asset Code: ${d.asset_id}<br>Price in USD: ${d.price_usd}`);
-      });
+  // Step 6: Initialize tool tip
+  // ==============================
+  var toolTip = d3.tip()
+    .attr("class", "tooltip")
+    .offset([80, -60])
+    .html(function (d) {
+      return (`Name: ${d.name}<br>Asset Code: ${d.asset_id}<br>Price in USD: ${d.price_usd}`);
+    });
 
-    // Step 7: Create tooltip in the chart
-    // ==============================
-    chartGroup.call(toolTip);
+  // Step 7: Create tooltip in the chart
+  // ==============================
+  chartGroup.call(toolTip);
 
-    // Step 8: Create event listeners to display and hide the tooltip
-    // ==============================
-    barGroup.on("mouseover", function(data) {
-      toolTip.show(data, this);
-    })
-      // onmouseout event
-      .on("mouseout", function(data, index) {
-        toolTip.hide(data);
-      });
+  // Step 8: Create event listeners to display and hide the tooltip
+  // ==============================
+  barGroup.on("mouseover", function (data) {
+    toolTip.show(data, this);
+  })
+    // onmouseout event
+    .on("mouseout", function (data, index) {
+      toolTip.hide(data);
+    });
 
-    // Create axes labels
-    chartGroup.append("text")
-      .attr("transform", "rotate(-90)")
-      .attr("y", 0 - chartMargin.left + 40)
-      .attr("x", 0 - (chartHeight / 2))
-      .attr("dy", "1em")
-      .attr("class", "axisText")
-      .text("Price (USD)");
+  // Create axes labels
+  chartGroup.append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("y", 0 - chartMargin.left + 40)
+    .attr("x", 0 - (chartHeight / 2))
+    .attr("dy", "1em")
+    .attr("class", "axisText")
+    .text("Price (USD)");
 
-    chartGroup.append("text")
-      .attr("transform", `translate(${chartWidth / 2}, ${chartHeight + chartMargin.top + 30})`)
-      .attr("class", "axisText")
-      //.attr("transform", "rotate(-65)")
-      .text("Cryptocurrency Code");
+  chartGroup.append("text")
+    .attr("transform", `translate(${chartWidth / 2}, ${chartHeight + chartMargin.top + 30})`)
+    .attr("class", "axisText")
+    //.attr("transform", "rotate(-65)")
+    .text("Cryptocurrency Code");
 
 
-  }).catch(function(error) {
-    console.log(error);
-  });
+}).catch(function (error) {
+  console.log(error);
+});

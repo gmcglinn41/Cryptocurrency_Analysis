@@ -12,7 +12,7 @@ import jinja2
 ##### DATABASE SETUP
 ###
 #
-engine = create_engine(f"postgresql://postgres:fender2007@localhost:5433/crypto_analysis_db")
+engine = create_engine(f"postgresql://postgres:postgres@localhost:5432/crypto_analysis_db")
 Base = automap_base()
 Base.prepare(engine, reflect=True)
 
@@ -71,17 +71,17 @@ def coins():
 def exchanges():
     return render_template('marketcap.html')
 
-@app.route('/historic')
-def historic():
-    return render_template('historic.html')
+# @app.route('/historic')
+# def historic():
+#     return render_template('historic.html')
 
 @app.route('/team')
 def team():
     return render_template('team.html')
 
-@app.route('/api')
-def api():
-    return render_template('api.html')
+# @app.route('/api')
+# def api():
+#     return render_template('api.html')
 
 ##### RUN THAT CODE
 ###
