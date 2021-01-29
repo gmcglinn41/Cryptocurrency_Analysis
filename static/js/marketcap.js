@@ -86,7 +86,27 @@ var trace1 = {
     title: 'Top 10 Crypto Market Capitalisations',
     showlegend: false,
     height: 800,
-    width: 800
+    width: 800, 
+    xaxis: {
+      title: {
+        text: 'Cryptocurrencies',
+        font: {
+          family: 'Courier New, monospace',
+          size: 18,
+          color: '#7f7f7f'
+        }
+      },
+    },
+    yaxis: {
+      title: {
+        text: 'Market Capitalisation ($)',
+        font: {
+          family: 'Courier New, monospace',
+          size: 18,
+          color: '#7f7f7f'
+        }
+      }
+    }
   };
   
   Plotly.newPlot('mainchart', data, layout);
