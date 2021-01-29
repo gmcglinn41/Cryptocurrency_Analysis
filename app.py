@@ -12,7 +12,7 @@ import jinja2
 ##### DATABASE SETUP
 ###
 #
-engine = create_engine(f"postgresql://postgres:fender2007@localhost:5433/crypto_analysis_db")
+engine = create_engine(f"postgresql://postgres:postgres@localhost:5433/crypto_analysis_db")
 Base = automap_base()
 Base.prepare(engine, reflect=True)
 
