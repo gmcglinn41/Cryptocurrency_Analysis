@@ -12,7 +12,7 @@ import jinja2
 ##### DATABASE SETUP
 ###
 #
-engine = create_engine(f"postgresql://postgres:postgres@localhost:5432/crypto_analysis_db")
+engine = create_engine(f"postgresql://postgres:fender2007@localhost:5433/crypto_analysis_db")
 Base = automap_base()
 Base.prepare(engine, reflect=True)
 
@@ -37,7 +37,7 @@ def api_overview():
 @app.route("/api/api_coins")
 def api_coins():
     dbConnect = engine.connect()
-    df = pd.read_sql('select * from asset_overview', dbConnect).head(100)
+    df = pd.read_sql('select * from asset_overview', dbConnect)
     json_coins = json.loads(df.to_json(orient='records'))
     dbConnect.close()
     return jsonify(json_coins)
@@ -67,9 +67,9 @@ def index():
 def coins():
     return render_template('coins.html')
 
-@app.route('/exchanges')
+@app.route('/marketcap')
 def exchanges():
-    return render_template('exchanges.html')
+    return render_template('marketcap.html')
 
 @app.route('/historic')
 def historic():
