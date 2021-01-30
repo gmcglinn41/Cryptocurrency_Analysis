@@ -29,7 +29,7 @@ app = Flask(__name__)
 @app.route("/api/api_overview")
 def api_overview():
     dbConnect = engine.connect()
-    df = pd.read_sql('select * from asset_overview', dbConnect).head(20)
+    df = pd.read_sql('select * from asset_overview', dbConnect).head(29)
     json_overview = json.loads(df.to_json(orient='records'))
     dbConnect.close()
     return jsonify(json_overview)

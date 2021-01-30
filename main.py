@@ -136,9 +136,11 @@ def dataframe_clean():
     global df_transform_exchanges
     global df_transform_assets
     global df_transform_symbols
+    global df_assets_temp
     
-    df_transform_exchanges = df_exchanges[[ 'exchange_id', 'website', 'name', 'data_symbols_count', 'volume_1mth_usd' ]]
-    df_transform_assets = df_assets[[ 'asset_id', 'name', 'price_usd' ]]
+    df_transform_exchanges = df_exchanges[[ 'exchange_id', 'website', 'name', 'data_symbols_count', 'volume_1mth_usd' ]]    
+    df_assets_temp = df_assets.loc[df_assets['type_is_crypto'] == 1]
+    df_transform_assets = df_assets_temp[[ 'asset_id', 'name', 'price_usd' ]]
     df_transform_symbols = df_symbols[[ 'symbol_id', 'exchange_id', 'asset_id_base', 'asset_id_quote' ]]
     
     df_transform_exchanges = df_transform_exchanges.dropna()
@@ -188,16 +190,15 @@ def database_push():
 
 
 def dataframe_display():
+    display( df_exchanges )
+    display( df_assets )
+    display( df_symbols )
+    display( df_exchange_rates )
+    display( df_ohlcv )
 
-     display( df_exchanges )
-     display( df_assets )
-     display( df_symbols )
-     display( df_exchange_rates )
-     display( df_ohlcv )
-
-#    display( df_transform_assets )
-#    display( df_transform_exchanges )
-#    display( df_transform_symbols )
+    #display( df_transform_assets )
+    #display( df_transform_exchanges )
+    #display( df_transform_symbols )
     
     ### DISPLAY DATAFRAMES TO CHECK DATA
     ##
@@ -214,4 +215,5 @@ def dataframe_display():
 api_dataframe_load()
 dataframe_clean()
 #database_push()
-dataframe_display()
+#dataframe_display()
+
